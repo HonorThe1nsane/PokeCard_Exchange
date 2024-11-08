@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("PokeCardExchange")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0+ef564315ab1acf5ebc580f1fc392046b0aff2135")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0+483c73b2160342c0ac38c1e62c324639f3419300")]
 [assembly: System.Reflection.AssemblyProductAttribute("PokeCardExchange")]
 [assembly: System.Reflection.AssemblyTitleAttribute("PokeCardExchange")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
