@@ -309,3 +309,4 @@
 /Users/troydavidson/PokeCard_Exchange/PokeCardExchange/obj/Debug/net8.0-ios/iossimulator-x64/PokeCardExchange.pdb
 /Users/troydavidson/PokeCard_Exchange/PokeCardExchange/obj/Debug/net8.0-ios/iossimulator-x64/PokeCardExchange.genruntimeconfig.cache
 /Users/troydavidson/PokeCard_Exchange/PokeCardExchange/obj/Debug/net8.0-ios/iossimulator-x64/ref/PokeCardExchange.dll
+/Users/troydavidson/PokeCard_Exchange/PokeCardExchange/obj/Debug/net8.0-ios/iossimulator-x64/resizetizer/r/Resources/default_image.jpg

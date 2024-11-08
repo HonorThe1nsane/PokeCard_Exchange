@@ -9,7 +9,7 @@
 
             <!-- Image Placeholder -->
             <Image
-                Source="welcome_image.png"  
+                Source="pokeCardIcon.png"
                 Aspect="AspectFit"
                 HeightRequest="200"
                 HorizontalOptions="Center" />

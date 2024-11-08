@@ -26,22 +26,40 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
-                        <StackLayout Padding="10">
-                            <Label
-                                FontAttributes="Bold"
-                                FontSize="Large"
-                                Text="{Binding ProductName}" />
-                            <Label
-                                FontAttributes="Bold"
-                                FontSize="Medium"
-                                Text="{Binding ConsoleName}"
-                                TextColor="Gray" />
-                            <Label
-                                FontAttributes="Bold"
-                                FontSize="Medium"
-                                Text="{Binding LoosePrice, StringFormat='Price: ${0:F2}'}"
-                                TextColor="Green" />
-                        </StackLayout>
+                        <Grid Padding="10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />   
+                                <!--  Product Details Column  -->
+                                <ColumnDefinition Width="Auto" /> 
+                                <!--  Image Column  -->
+                            </Grid.ColumnDefinitions>
+
+                            <!--  Product Details (Left Column)  -->
+                            <StackLayout Grid.Column="0" VerticalOptions="CenterAndExpand">
+                                <Label
+                                    FontAttributes="Bold"
+                                    FontSize="Large"
+                                    Text="{Binding ProductName}" />
+                                <Label
+                                    FontSize="Medium"
+                                    Text="{Binding ConsoleName}"
+                                    TextColor="Gray" />
+                                <Label
+                                    FontSize="Medium"
+                                    Text="{Binding LoosePriceInDollars, StringFormat='Loose Price: ${0:F2}'}"
+                                    TextColor="Green" />
+                            </StackLayout>
+
+                            <!--  Image (Right Column)  -->
+                            <Image
+                                Grid.Column="1"
+                                Aspect="AspectFill"
+                                HeightRequest="100"
+                                Margin="0,0,50,0"  
+                                Source="{Binding ImageUrl, FallbackValue='default_image.jpg'}"
+                                VerticalOptions="Center"
+                                WidthRequest="80" />
+                        </Grid>
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
