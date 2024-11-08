@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="PokeCardExchange.StartTradeSearch"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+    
+    <StackLayout Padding="10" VerticalOptions="FillAndExpand">
+        
+        <!-- Search Bar -->
+        <SearchBar
+            x:Name="searchBar"
+            Placeholder="Search for cards..."
+            TextChanged="OnSearchTextChanged" />
+
+        <!-- Loading Indicator -->
+        <Label
+            x:Name="loadingLabel"
+            Text="Searching..."
+            FontSize="Medium"
+            IsVisible="False"
+            HorizontalTextAlignment="Center" />
+
+        <!-- ListView for displaying search results -->
+        <ListView x:Name="resultsListView" ItemsSource="{Binding Products}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Padding="10">
+                            <Label Text="{Binding ProductName}" FontAttributes="Bold" />
+                            <Label Text="{Binding ConsoleName}" FontSize="Small" />
+                            <Label Text="{Binding LoosePrice, StringFormat='Price: {0:C}'}" FontSize="Small" />
+                            <Image Source="{Binding ImageUrl}" HeightRequest="100" Aspect="AspectFit" />
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        
+    </StackLayout>
+</ContentPage>
