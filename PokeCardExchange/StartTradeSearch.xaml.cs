@@ -1,148 +1,118 @@
 using System;
-using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Net.Http;
 using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Maui.Controls;
+using System.Text.Json.Serialization;
 
-namespace PokeCardExchange;
-
-public partial class StartTradeSearch : ContentPage
+namespace PokeCardExchange
 {
-    public List<Product> Products { get; set; } = new List<Product>();
-    private CancellationTokenSource _cts;
-    private static readonly HttpClient _httpClient = new HttpClient();
-    private const string ApiKey = "1db0128418eb87d76be1e2667c69cb7cef7d77d7";  // Replace with your actual API key
-    private const string ProductsApiUrl = "https://www.pricecharting.com/api/product";
-    private const string OffersApiUrl = "https://www.pricecharting.com/api/offer-details";
-
-    public StartTradeSearch()
+    public partial class StartTradeSearch : ContentPage
     {
-        InitializeComponent();
-        BindingContext = this;
-        _cts = new CancellationTokenSource();
-    }
+        public ObservableCollection<Product> Products { get; set; } = new ObservableCollection<Product>();
+        private CancellationTokenSource _cts;
+        private static readonly HttpClient _httpClient = new HttpClient();
+        private const string ApiKey = "1db0128418eb87d76be1e2667c69cb7cef7d77d7";  // Replace with your actual API key
+        private const string ProductsApiUrl = "https://www.pricecharting.com/api/products";
 
-    // Main search logic
-    private async void OnSearchTextChanged(object sender, TextChangedEventArgs e)
-    {
-        _cts?.Cancel();  // Cancel previous search if it's still running
-        _cts = new CancellationTokenSource();
-
-        string query = e.NewTextValue;
-
-        if (!string.IsNullOrWhiteSpace(query))
+        public StartTradeSearch()
         {
-            loadingLabel.IsVisible = true;
+            InitializeComponent();
+            BindingContext = this;  // Ensures Products binds to CollectionView
+            _cts = new CancellationTokenSource();
+        }
+
+        private async void OnSearchTextChanged(object sender, TextChangedEventArgs e)
+        {
+            _cts?.Cancel();  // Cancel any ongoing requests
+            _cts = new CancellationTokenSource();
+            string query = e.NewTextValue;
+
+            if (!string.IsNullOrWhiteSpace(query))
+            {
+                loadingLabel.IsVisible = true;
+
+                try
+                {
+                    await Task.Delay(500, _cts.Token);  // Debounce search
+
+                    var products = await SearchProducts(query, _cts.Token);
+
+                    MainThread.BeginInvokeOnMainThread(() =>
+                    {
+                        Products.Clear();  // Clear previous results
+                        foreach (var product in products)
+                        {
+                            Products.Add(product);  // Add new products
+                        }
+                        OnPropertyChanged(nameof(Products));  // Notify UI of changes
+                        loadingLabel.IsVisible = false;
+                    });
+                }
+                catch (TaskCanceledException)
+                {
+                    Console.WriteLine("Search operation was canceled.");
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Error: {ex.Message}");
+                }
+            }
+            else
+            {
+                Products.Clear();
+                loadingLabel.IsVisible = false;
+            }
+        }
+
+        private async Task<List<Product>> SearchProducts(string query, CancellationToken token)
+        {
+            string requestUrl = $"{ProductsApiUrl}?t={ApiKey}&q={Uri.EscapeDataString(query)}";
 
             try
             {
-                // Debounce the search to avoid spamming requests
-                await Task.Delay(500, _cts.Token);
-
-                var products = await SearchProducts(query, _cts.Token);
-                
-                // Pull offer data (including images) for each product
-                foreach (var product in products)
+                HttpResponseMessage response = await _httpClient.GetAsync(requestUrl, token);
+                if (response.IsSuccessStatusCode)
                 {
-                    var offerDetails = await GetOfferDetails(product.Id);
-                    product.ImageUrl = offerDetails?.ImageUrl;
+                    string jsonResponse = await response.Content.ReadAsStringAsync();
+                    Console.WriteLine($"Product API Response: {jsonResponse}");
+
+                    var apiResponse = JsonSerializer.Deserialize<ApiProductsResponse>(jsonResponse);
+                    return apiResponse?.Products ?? new List<Product>();
                 }
-
-                MainThread.BeginInvokeOnMainThread(() =>
-                {
-                    Products = products;
-                    resultsListView.ItemsSource = Products;
-                    loadingLabel.IsVisible = false;
-                });
-            }
-            catch (TaskCanceledException)
-            {
-                Console.WriteLine("Search operation was canceled.");
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Error: {ex.Message}");
+                Console.WriteLine($"Product search error: {ex.Message}");
             }
-        }
-        else
-        {
-            Products.Clear();
-            resultsListView.ItemsSource = Products;
-            loadingLabel.IsVisible = false;
+
+            return new List<Product>();
         }
     }
 
-    // Product search API call
-    private async Task<List<Product>> SearchProducts(string query, CancellationToken token)
+    public class ApiProductsResponse
     {
-        string requestUrl = $"{ProductsApiUrl}?t={ApiKey}&q={Uri.EscapeDataString(query)}";
+        [JsonPropertyName("status")]
+        public string Status { get; set; } = string.Empty;
 
-        try
-        {
-            HttpResponseMessage response = await _httpClient.GetAsync(requestUrl, token);
-            if (response.IsSuccessStatusCode)
-            {
-                string jsonResponse = await response.Content.ReadAsStringAsync();
-                Console.WriteLine($"Product API Response: {jsonResponse}");
-
-                var apiResponse = JsonSerializer.Deserialize<ApiProductsResponse>(jsonResponse);
-                return apiResponse?.Products ?? new List<Product>();
-            }
-        }
-        catch (Exception ex)
-        {
-            Console.WriteLine($"Product search error: {ex.Message}");
-        }
-
-        return new List<Product>();
+        [JsonPropertyName("products")]
+        public List<Product> Products { get; set; } = new List<Product>();
     }
-
-    // Offer details API call to retrieve image URLs
-    private async Task<OfferDetails> GetOfferDetails(string productId)
+    public class Product
     {
-        string requestUrl = $"{OffersApiUrl}?t={ApiKey}&offer-id={productId}";
+        [JsonPropertyName("id")]
+        public string Id { get; set; } = string.Empty;
 
-        try
-        {
-            HttpResponseMessage response = await _httpClient.GetAsync(requestUrl);
-            if (response.IsSuccessStatusCode)
-            {
-                string jsonResponse = await response.Content.ReadAsStringAsync();
-                Console.WriteLine($"Offer Details API Response: {jsonResponse}");
+        [JsonPropertyName("product-name")]
+        public string ProductName { get; set; } = string.Empty;
 
-                var offerDetails = JsonSerializer.Deserialize<OfferDetails>(jsonResponse);
-                return offerDetails;
-            }
-        }
-        catch (Exception ex)
-        {
-            Console.WriteLine($"Offer details error: {ex.Message}");
-        }
+        [JsonPropertyName("console-name")]
+        public string ConsoleName { get; set; } = string.Empty;
 
-        return null;
+        [JsonPropertyName("loose-price")]
+        public decimal LoosePrice { get; set; } = 0.0m;
     }
-}
 
-// Models
-public class ApiProductsResponse
-{
-    public string Status { get; set; }
-    public List<Product> Products { get; set; }
-}
-
-public class Product
-{
-    public string Id { get; set; }
-    public string ProductName { get; set; }
-    public string ConsoleName { get; set; }
-    public decimal LoosePrice { get; set; }
-    public string ImageUrl { get; set; }
-}
-
-public class OfferDetails
-{
-    public string OfferId { get; set; }
-    public string ImageUrl { get; set; }
 }

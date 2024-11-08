@@ -1,40 +1,51 @@
-<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage
     x:Class="PokeCardExchange.StartTradeSearch"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
-    
-    <StackLayout Padding="10" VerticalOptions="FillAndExpand">
-        
-        <!-- Search Bar -->
-        <SearchBar
-            x:Name="searchBar"
-            Placeholder="Search for cards..."
-            TextChanged="OnSearchTextChanged" />
 
-        <!-- Loading Indicator -->
+    <!--  Layout to allow vertical stacking and scrolling  -->
+    <StackLayout Padding="10">
+
+        <!--  Search Entry Field  -->
+        <Entry Placeholder="Search for a card" TextChanged="OnSearchTextChanged" />
+
+        <!--  Loading Label  -->
         <Label
             x:Name="loadingLabel"
-            Text="Searching..."
-            FontSize="Medium"
+            HorizontalOptions="Center"
             IsVisible="False"
-            HorizontalTextAlignment="Center" />
+            Text="Loading..." />
 
-        <!-- ListView for displaying search results -->
-        <ListView x:Name="resultsListView" ItemsSource="{Binding Products}">
+        <!--  ListView for displaying search results, scrollable by default  -->
+        <ListView
+            x:Name="resultsListView"
+            HasUnevenRows="True"
+            ItemsSource="{Binding Products}">
+
+            <!--  Define how each item should appear  -->
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
                         <StackLayout Padding="10">
-                            <Label Text="{Binding ProductName}" FontAttributes="Bold" />
-                            <Label Text="{Binding ConsoleName}" FontSize="Small" />
-                            <Label Text="{Binding LoosePrice, StringFormat='Price: {0:C}'}" FontSize="Small" />
-                            <Image Source="{Binding ImageUrl}" HeightRequest="100" Aspect="AspectFit" />
+                            <Label
+                                FontAttributes="Bold"
+                                FontSize="Large"
+                                Text="{Binding ProductName}" />
+                            <Label
+                                FontAttributes="Bold"
+                                FontSize="Medium"
+                                Text="{Binding ConsoleName}"
+                                TextColor="Gray" />
+                            <Label
+                                FontAttributes="Bold"
+                                FontSize="Medium"
+                                Text="{Binding LoosePrice, StringFormat='Price: ${0:F2}'}"
+                                TextColor="Green" />
                         </StackLayout>
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-        
+
     </StackLayout>
 </ContentPage>
