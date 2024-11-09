@@ -9,9 +9,10 @@
 
             <!-- Image Placeholder -->
             <Image
-                Source="pokeCardIcon.png"
-                Aspect="AspectFit"
-                HeightRequest="200"
+                Source="pokecardicon.png"
+                Aspect="Fill"
+                HeightRequest="500"
+                WidthRequest="450"
                 HorizontalOptions="Center" />
             <Label
                 Text="Welcome to PokéCard Exchange!"

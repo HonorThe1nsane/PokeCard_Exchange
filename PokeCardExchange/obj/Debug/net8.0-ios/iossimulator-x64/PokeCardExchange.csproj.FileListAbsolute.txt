@@ -264,10 +264,16 @@
 /Users/troydavidson/PokeCard_Exchange/PokeCardExchange/obj/Debug/net8.0-ios/iossimulator-x64/mauisplash.inputs
 /Users/troydavidson/PokeCard_Exchange/PokeCardExchange/obj/Debug/net8.0-ios/iossimulator-x64/resizetizer/sp/MauiInfo.plist
 /Users/troydavidson/PokeCard_Exchange/PokeCardExchange/obj/Debug/net8.0-ios/iossimulator-x64/resizetizer/sp/MauiSplash.storyboard
-/Users/troydavidson/PokeCard_Exchange/PokeCardExchange/obj/Debug/net8.0-ios/iossimulator-x64/resizetizer/sp/splash_7CF9AE42DA2017EC6621B726A870D40F01970097ED8F3D99ABBC1EC8470F119D.png
-/Users/troydavidson/PokeCard_Exchange/PokeCardExchange/obj/Debug/net8.0-ios/iossimulator-x64/resizetizer/sp/splash_7CF9AE42DA2017EC6621B726A870D40F01970097ED8F3D99ABBC1EC8470F119D@2x.png
-/Users/troydavidson/PokeCard_Exchange/PokeCardExchange/obj/Debug/net8.0-ios/iossimulator-x64/resizetizer/sp/splash_7CF9AE42DA2017EC6621B726A870D40F01970097ED8F3D99ABBC1EC8470F119D@3x.png
+/Users/troydavidson/PokeCard_Exchange/PokeCardExchange/obj/Debug/net8.0-ios/iossimulator-x64/resizetizer/sp/pokeballicon_4DB23267662C562887AC431DACA4211DDE4897E1F89D8D580DC1378A9DD289E2.png
+/Users/troydavidson/PokeCard_Exchange/PokeCardExchange/obj/Debug/net8.0-ios/iossimulator-x64/resizetizer/sp/pokeballicon_4DB23267662C562887AC431DACA4211DDE4897E1F89D8D580DC1378A9DD289E2@2x.png
+/Users/troydavidson/PokeCard_Exchange/PokeCardExchange/obj/Debug/net8.0-ios/iossimulator-x64/resizetizer/sp/pokeballicon_4DB23267662C562887AC431DACA4211DDE4897E1F89D8D580DC1378A9DD289E2@3x.png
+/Users/troydavidson/PokeCard_Exchange/PokeCardExchange/obj/Debug/net8.0-ios/iossimulator-x64/resizetizer/sp/splash_698C915D37EF84F34C68C738BF48D350FEFEFEF0AA1E24C83F97BC050CA25728.png
+/Users/troydavidson/PokeCard_Exchange/PokeCardExchange/obj/Debug/net8.0-ios/iossimulator-x64/resizetizer/sp/splash_698C915D37EF84F34C68C738BF48D350FEFEFEF0AA1E24C83F97BC050CA25728@2x.png
+/Users/troydavidson/PokeCard_Exchange/PokeCardExchange/obj/Debug/net8.0-ios/iossimulator-x64/resizetizer/sp/splash_698C915D37EF84F34C68C738BF48D350FEFEFEF0AA1E24C83F97BC050CA25728@3x.png
 /Users/troydavidson/PokeCard_Exchange/PokeCardExchange/obj/Debug/net8.0-ios/iossimulator-x64/mauisplash.stamp
+/Users/troydavidson/PokeCard_Exchange/PokeCardExchange/obj/Debug/net8.0-ios/iossimulator-x64/resizetizer/r/pokecardicon@3x.png
+/Users/troydavidson/PokeCard_Exchange/PokeCardExchange/obj/Debug/net8.0-ios/iossimulator-x64/resizetizer/r/pokecardicon@2x.png
+/Users/troydavidson/PokeCard_Exchange/PokeCardExchange/obj/Debug/net8.0-ios/iossimulator-x64/resizetizer/r/pokecardicon.png
 /Users/troydavidson/PokeCard_Exchange/PokeCardExchange/obj/Debug/net8.0-ios/iossimulator-x64/resizetizer/r/Assets.xcassets/appicon.appiconset/appiconItunesArtwork.png
 /Users/troydavidson/PokeCard_Exchange/PokeCardExchange/obj/Debug/net8.0-ios/iossimulator-x64/resizetizer/r/Assets.xcassets/appicon.appiconset/appicon83.5x83.5@2x.png
 /Users/troydavidson/PokeCard_Exchange/PokeCardExchange/obj/Debug/net8.0-ios/iossimulator-x64/resizetizer/r/Assets.xcassets/appicon.appiconset/appicon76x76@2x.png
@@ -280,6 +286,7 @@
 /Users/troydavidson/PokeCard_Exchange/PokeCardExchange/obj/Debug/net8.0-ios/iossimulator-x64/resizetizer/r/Assets.xcassets/appicon.appiconset/appicon20x20@3x.png
 /Users/troydavidson/PokeCard_Exchange/PokeCardExchange/obj/Debug/net8.0-ios/iossimulator-x64/resizetizer/r/Assets.xcassets/appicon.appiconset/appicon20x20@2x.png
 /Users/troydavidson/PokeCard_Exchange/PokeCardExchange/obj/Debug/net8.0-ios/iossimulator-x64/resizetizer/r/Assets.xcassets/appicon.appiconset/Contents.json
+/Users/troydavidson/PokeCard_Exchange/PokeCardExchange/obj/Debug/net8.0-ios/iossimulator-x64/resizetizer/r/Resources/default_image.jpg
 /Users/troydavidson/PokeCard_Exchange/PokeCardExchange/obj/Debug/net8.0-ios/iossimulator-x64/mauiimage.stamp
 /Users/troydavidson/PokeCard_Exchange/PokeCardExchange/obj/Debug/net8.0-ios/iossimulator-x64/mauiimage.outputs
 /Users/troydavidson/PokeCard_Exchange/PokeCardExchange/obj/Debug/net8.0-ios/iossimulator-x64/resizetizer/f/MauiInfo.plist
@@ -309,4 +316,3 @@
 /Users/troydavidson/PokeCard_Exchange/PokeCardExchange/obj/Debug/net8.0-ios/iossimulator-x64/PokeCardExchange.pdb
 /Users/troydavidson/PokeCard_Exchange/PokeCardExchange/obj/Debug/net8.0-ios/iossimulator-x64/PokeCardExchange.genruntimeconfig.cache
 /Users/troydavidson/PokeCard_Exchange/PokeCardExchange/obj/Debug/net8.0-ios/iossimulator-x64/ref/PokeCardExchange.dll
-/Users/troydavidson/PokeCard_Exchange/PokeCardExchange/obj/Debug/net8.0-ios/iossimulator-x64/resizetizer/r/Resources/default_image.jpg

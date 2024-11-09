@@ -1,0 +1,13 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "C/C++ Runner: Debug Session",
+      "type": "lldb",
+      "request": "launch",
+      "args": [],
+      "cwd": "/Users/troydavidson/PokeCard_Exchange/PokeCardExchange/Resources/AppIcon",
+      "program": "/Users/troydavidson/PokeCard_Exchange/PokeCardExchange/Resources/AppIcon/build/Debug/outDebug"
+    }
+  ]
+}
